@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 ver=3.0
-Mod=HelloCairoGtk
+Mod=GtkCairoAnimationDemo
 Module=${Mod}-$ver
 mod=`echo "${Mod}" | tr '[:upper:]' '[:lower:]'`+
 module="${mod}-${ver}"

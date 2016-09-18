@@ -1,17 +1,19 @@
-# SwiftHelloCairoGtk
-A simple 'hello-world' app showing how to draw on a canvas using SwiftGtk and SwiftCairo (although cairo is not very Swifty yet at this stage)
+# SwiftGtkCairoAnimationDemo
+A simple demo app showing how to draw an animation on a canvas using SwiftGtk and SwiftCairo.
 
 ## Building
 Make sure you have all the prerequisites installed (see below).  After that, you can simply clone this repository and build the command line executable (be patient, this will download all the required dependencies and take a while to compile) using
 
-	git clone https://github.com/rhx/SwiftHelloCairoGtk.git
+	git clone https://github.com/rhx/SwiftGtkCairoAnimationDemo.git
 	./build.sh
 	
 After that, you can run the program using
 
-	.build/debug/HelloCairoGtk
+	.build/debug/GtkCairoAnimationDemo
 
-A simple, empty 'Hello Cairo' window should appear.  To exit the program, click the close button or press Control-C in the Terminal window.
+On macOS, you can also open the app that was created:
+
+	open .build/app/GtkCairoAnimationDemo.app
 
 ### Xcode
 
@@ -19,7 +21,7 @@ On macOS, you can build the project using Xcode instead.  To do this, you need t
 
 
 	./xcodegen.sh
-	open HelloCairoGtk.xcodeproj
+	open GtkCairoAnimationDemo.xcodeproj
 
 After that, select the executable target (not the Bundle/Framework target with the same name as the executable) and use the (usual) Build and Run buttons to build/run your project.
 
@@ -28,16 +30,16 @@ After that, select the executable target (not the Bundle/Framework target with t
 
 ### Swift
 
-To build, you need a very recent Swift compiler (Swift 3.0 Preview 6 at the time of this writing, download from https://swift.org/download/ -- if you are using macOS, make sure you have the command line tools installed as well).  Test that your compiler works using `swift --version`, which should give you something like
+To build, you need Swift 3.0 (download from https://swift.org/download/ -- if you are using macOS, make sure you have the command line tools installed as well).  Test that your compiler works using `swift --version`, which should give you something like
 
 	$ swift --version
-	Apple Swift version 3.0 (swiftlang-800.0.43.6 clang-800.0.38)
+	Apple Swift version 3.0 (swiftlang-800.0.46.2 clang-800.0.38)
 	Target: x86_64-apple-macosx10.9
 
 on macOS, or on Linux you should get something like:
 
 	$ swift --version
-	Swift version 3.0 (swift-3.0-PREVIEW-6)
+	Swift version 3.0 (swift-3.0-RELEASE)
 	Target: x86_64-unknown-linux-gnu
 
 ### Gtk 3.18 or higher
@@ -76,14 +78,10 @@ If you get an error such as
 	$ ./build.sh 
 	error: unable to invoke subcommand: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift-package (No such file or directory)
 	
-this probably means that your Swift toolchain is too old.  Make sure the latest toolchain (Swift 3 preview 6 at the time of this writing) is the one that is found when you run the Swift compiler, e.g.:
-
-	$ swiftc --version
-	Apple Swift version 3.0 (swiftlang-800.0.43.6 clang-800.0.38)
-	Target: x86_64-apple-macosx10.9
+this probably means that your Swift toolchain is too old.  Make sure the latest toolchain is the one that is found when you run the Swift compiler (see above).
 
   If you get an older version, make sure that the right version of the swift compiler is found first in your `PATH`.  On macOS, use xcode-select to select and install the latest version, e.g.:
 
-	sudo xcode-select -s /Applications/Devel/Xcode-beta.app
+	sudo xcode-select -s /Applications/Xcode.app
 	xcode-select --install
 
