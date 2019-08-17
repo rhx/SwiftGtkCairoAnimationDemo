@@ -7,7 +7,7 @@ var drawingArea: DrawingArea!
 let status = Application.run { app in
     var w = 320.0
     var h = 200.0
-    var window = ApplicationWindowRef(application: app)
+    let window = ApplicationWindowRef(application: app)
     window.title = "Bouncing Disc"
     window.setDefaultSize(width: CInt(w), height: CInt(h))
 
@@ -27,10 +27,10 @@ let status = Application.run { app in
     var y = r
     var dy = 1.0    // velocity
     var dx = 1.0
-    var ax = 0.0    // acceleration
-    var ay = 1.0
+    let ax = 0.0    // acceleration
+    let ay = 1.0
     drawingArea.onDraw {
-        var cr = $1 // cairo drawing context
+        let cr = $1 // cairo drawing context
 
         // draw a black, filled circle
         cr.setSource(red: 0, green: 0, blue: 0)
