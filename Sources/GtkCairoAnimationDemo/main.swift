@@ -9,7 +9,7 @@ let status = Application.run { app in
     var h = 200.0
     let window = ApplicationWindowRef(application: app)
     window.title = "Bouncing Disc"
-    window.setDefaultSize(width: CInt(w), height: CInt(h))
+    window.setDefaultSize(width: Int(w), height: Int(h))
 
     drawingArea = DrawingArea()
     window.add(widget: drawingArea)
