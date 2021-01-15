@@ -5,22 +5,12 @@ import Gtk
 var drawingArea: DrawingArea!
 
 let status = Application.run { app in
-    var w = 320.0
-    var h = 200.0
     let window = ApplicationWindowRef(application: app)
     window.title = "Bouncing Disc"
-    window.setDefaultSize(width: Int(w), height: Int(h))
+    window.setDefaultSize(width: 320, height: 200)
 
     drawingArea = DrawingArea()
-    window.add(widget: drawingArea)
-
-    // update width and height if user resizes the window
-    window.onConfigureEvent { _,_ in
-        let size = window.size
-        w = Double(size.width)
-        h = Double(size.height)
-        return false
-    }
+    window.set(child: drawingArea)
 
     let r = 10.0    // disc radius
     var x = r       // position
@@ -29,8 +19,9 @@ let status = Application.run { app in
     var dx = 1.0
     let ax = 0.0    // acceleration
     let ay = 1.0
-    drawingArea.onDraw {
-        let cr = $1 // cairo drawing context
+    drawingArea.setDrawFunc { drawingArea, cr, width, height in
+        let w = Double(width)
+        let h = Double(height)
 
         // draw a black, filled circle
         cr.setSource(red: 0, green: 0, blue: 0)
@@ -54,13 +45,12 @@ let status = Application.run { app in
             y = r
             dy = 1.0
         }
-        return false
     }
-    window.showAll()
+    window.show()
 
     /// draw our animation at 50Hz (every 20ms)
     timeout(add: 20) {
-        window.queueDraw()
+        drawingArea.queueDraw()
         return true
     }
 }
