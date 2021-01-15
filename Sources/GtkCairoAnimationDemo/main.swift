@@ -15,7 +15,7 @@ let status = Application.run { app in
     window.add(widget: drawingArea)
 
     // update width and height if user resizes the window
-    window.connectSignal(name: "configure_event") { _,_ in
+    window.onConfigureEvent { _,_ in
         let size = window.size
         w = Double(size.width)
         h = Double(size.height)
