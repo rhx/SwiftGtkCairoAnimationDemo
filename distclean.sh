@@ -4,4 +4,4 @@
 #
 . ./config.sh
 ./clean.sh
-exec rm -rf Package.resolved Package.pins Packages Sources/Gtk/${Module}.swift Sources/Gtk/Swift${Mod}.swift ${Mod}.xcodeproj
+exec rm -rf Package.resolved Package.pins Packages .swiftpm Sources/Gtk/${Module}.swift Sources/Gtk/Swift${Mod}.swift ${Mod}.xcodeproj
